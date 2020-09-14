@@ -1,0 +1,33 @@
+{
+  "name": "oauth-github",
+  "version": "1.0.0",
+  "description": "Hi",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "node-fetch": "^2.6.1",
+    "shortid": "^2.2.15"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/christiannwamba/oauth-github.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/christiannwamba/oauth-github/issues"
+  },
+  "homepage": "https://github.com/christiannwamba/oauth-github#readme"
+}
