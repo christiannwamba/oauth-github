@@ -1,5 +1,11 @@
 <html>
 <body>
   <h1>Protected: Home</h1>
+  <h2>Here are your Repositories</h2>
+  <ul>
+    <% repos.forEach(function(repo){  %>
+      <li> <%= repo.name %> </li>
+    <% })  %>
+  </ul>
 </body>
 </html>

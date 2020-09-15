@@ -16,12 +16,29 @@ app.use(express.json());
 app.use(session({ secret: 'shhhhh', resave: false, saveUninitialized: false }));
 app.set('view engine', 'ejs');
 
+const apiBase = 'https://api.github.com';
 const authorizationEndpoint = 'https://github.com/login/oauth/authorize';
 const tokenEndpoint = 'https://github.com/login/oauth/access_token';
 
 app.get('/', function (req, res) {
   if (req.session.accessToken) {
-    res.render('index');
+    const query = querystring.encode({
+      sort: 'created',
+      direction: 'desc',
+    });
+    fetch(`${apiBase}/user/repos?${query}`, {
+      headers: {
+        Authorization: `Bearer ${req.session.accessToken}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((repos) => {
+        res.render('index', {repos});
+      })
+      .catch((err) => {
+        console.error(err);
+        res.redirect('/error');
+      });
   } else {
     req.session.localRedirect = '/';
     startAuthFlow(req, res);
